@@ -38,6 +38,7 @@ class Client extends \Predis\Client
      */
     public function queueCommand($key, $method, array $arguments = array())
     {
+
         // Create a CommandInterface object to queue for execution later
         $command = $this->getProfile()->createCommand($method, $arguments);
 
@@ -49,8 +50,9 @@ class Client extends \Predis\Client
      *
      * @access public
      * @param string $key
-     * @return array
+     * @return bool
      */
+    /**
     public function executeQueue($key)
     {
         // Do we have commands queued?
@@ -72,10 +74,29 @@ class Client extends \Predis\Client
      * Clear a queue based on a key
      *
      * @access public
-     * @param string $key
+     * @param $key
      */
     public function clearQueue($key)
     {
         unset($this->queued_command_map[$key]);
+    }
+
+    /**
+     * Magic method for all calls to convert KeyDefinitions to strings and pass through to \Predis\Client
+     *
+     * @access public
+     * @param string $method
+     * @param array $arguments
+     * @return mixed
+     */
+    public function __call($method, $arguments = array())
+    {
+        // If the first argument is a KeyDefinition instead of a string, cast to a string
+        if (isset($arguments[0]) && $arguments[0] instanceof KeyDefinition) {
+            $arguments[0] = (string) $arguments[0];
+        }
+
+        // Pass the call through to the Predis client
+        return parent::__call($method, $arguments);
     }
 }

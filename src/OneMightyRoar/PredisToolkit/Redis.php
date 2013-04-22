@@ -105,6 +105,7 @@ class Redis extends Singleton
      */
     public function __call($method, $arguments = array())
     {
+        // Connect if this is the first usage
         if (!$this->client->isConnected()) {
             $this->client->connect();
         }
