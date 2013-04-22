@@ -1,4 +1,4 @@
-# PHP ActiveRecord Components
+# PHP Redis Transaction Queue
 
 Allows the easy use of queueing multiple Redis commands into a "transaction" to be executed at one time
 
