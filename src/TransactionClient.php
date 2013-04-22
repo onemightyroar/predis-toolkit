@@ -43,19 +43,19 @@ class TransactionClient
      * @access private
      */
     private $key;
-	
-	/**
-	 * Constructor
-	 * 
-	 * @access public
-	 * @param string $key The key to use when queueing these commands. Uses uniqid() when not provided.
-	 */
-	public function __construct($key = null)
+
+    /**
+     * Constructor
+     *
+     * @access public
+     * @param string $key The key to use when queueing these commands. Uses uniqid() when not provided.
+     */
+    public function __construct($key = null)
     {
-		$this->redis = Redis::instance();
-		$this->client = $this->redis->get_client();
-		$this->key = is_null($key) ? uniqid() : $key;
-	}
+        $this->redis = Redis::instance();
+        $this->client = $this->redis->get_client();
+        $this->key = is_null($key) ? uniqid() : $key;
+    }
     
     /**
      * Run all queued redis commands
@@ -65,20 +65,19 @@ class TransactionClient
      */
     public function processQueue()
     {
-    	return $this->client->executeQueue($this->key);
+        return $this->client->executeQueue($this->key);
     }
 
-	/**
-	 * Magic method for all calls. Passes the call through to the client with queue key
-	 * 
-	 * @access public
-	 * @param string $method
-	 * @param array $arguments
-	 * @return mixed
-	 */
+    /**
+     * Magic method for all calls. Passes the call through to the client with queue key
+     *
+     * @access public
+     * @param string $method
+     * @param array $arguments
+     * @return mixed
+     */
     public function __call($method, $arguments = array())
     {
-    	$this->client->queueCommand($this->key, $method, $arguments);
+        $this->client->queueCommand($this->key, $method, $arguments);
     }
-	
 }

@@ -4,8 +4,8 @@
  *
  * Allows the easy use of queueing multiple Redis commands into a "transaction" to be executed at one time
  *
- * @copyright	2013 One Mighty Roar
- * @link	 	http://onemightyroar.com
+ * @copyright 2013 One Mighty Roar
+ * @link http://onemightyroar.com
  */
 
 namespace OneMightyRoar\PHP_Redis_Transaction_Queue;
@@ -16,13 +16,13 @@ namespace OneMightyRoar\PHP_Redis_Transaction_Queue;
  * PHP 5.3+ Singleton Pattern
  * This class was originally taken from Paulus
  *
- * @author		Trevor Suarez (Rican7)
- * @copyright	2013 Trevor Suarez
- * @link		https://github.com/Rican7/Paulus/
- * @license		https://github.com/Rican7/Paulus/blob/master/LICENSE
+ * @author Trevor Suarez (Rican7)
+ * @copyright 2013 Trevor Suarez
+ * @link https://github.com/Rican7/Paulus/
+ * @license https://github.com/Rican7/Paulus/blob/master/LICENSE
  *
  * @abstract
- * @package	\OneMightyRoar\PHP_Redis_Transaction_Queue
+ * @package \OneMightyRoar\PHP_Redis_Transaction_Queue
  */
 abstract class Singleton
 {
@@ -33,7 +33,6 @@ abstract class Singleton
      * Singleton constructor
      *
      * @access private
-     * @return void
      */
     private function __construct()
     {
@@ -52,7 +51,7 @@ abstract class Singleton
     final private function __clone()
     {
         // Do nothing
-        //TODO: Possibly throw an exception here..
+        // TODO: Possibly throw an exception here..
     }
 
     /**
@@ -96,21 +95,4 @@ abstract class Singleton
     {
         return static::instance();
     }
-
-    /**
-     * get_instance
-     *
-     * Alias the instance method
-     *
-     * @static
-     * @final
-     * @deprecated
-     * @access public
-     * @return Singleton
-     */
-    final public static function get_instance()
-    {
-        return static::instance();
-    }
-
-} // End class Singleton
+}
