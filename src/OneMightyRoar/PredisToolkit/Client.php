@@ -1,21 +1,21 @@
 <?php
 /**
- * PHP-Redis-Transaction-Queue
+ * Predis-Toolkit
  *
- * Allows the easy use of queueing multiple Redis commands into a "transaction" to be executed at one time
+ * Additional classes and functionality to extend Predis
  *
  * @copyright 2013 One Mighty Roar
  * @link http://onemightyroar.com
  */
 
-namespace OneMightyRoar\PHP_Redis_Transaction_Queue;
+namespace OneMightyRoar\PredisToolkit;
 
 /**
  * Client
  *
  * Extending class for Predis client to add extra functionality
  *
- * @package OneMightyRoar\PHP_Redis_Transaction_Queue
+ * @package OneMightyRoar\PredisToolkit
  *
  */
 class Client extends \Predis\Client

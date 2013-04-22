@@ -1,6 +1,6 @@
 {
-    "name": "onemightyroar/php-redis-transaction-queue",
-    "description": "Allows the easy use of queueing multiple Redis commands into a \"transaction\" to be executed at one time",
+    "name": "onemightyroar/predis-toolkit",
+    "description": "Additional classes and functionality to extend Predis",
     "type": "library",
     "keywords": ["redis", "transaction"],
     "homepage": "http://onemightyroar.com/",
@@ -22,6 +22,6 @@
         "predis/predis": "0.8.3"
     },
     "autoload": {
-        "psr-0": { "OneMightyRoar\\PHP_Redis_Transaction_Queue\\": "src/" }
+        "psr-0": { "OneMightyRoar\\PredisToolkit\\": "src/" }
     }
 }

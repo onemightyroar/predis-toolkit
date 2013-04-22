@@ -1,14 +1,14 @@
 <?php
 /**
- * PHP-Redis-Transaction-Queue
+ * Predis-Toolkit
  *
- * Allows the easy use of queueing multiple Redis commands into a "transaction" to be executed at one time
+ * Additional classes and functionality to extend Predis
  *
  * @copyright 2013 One Mighty Roar
  * @link http://onemightyroar.com
  */
 
-namespace OneMightyRoar\PHP_Redis_Transaction_Queue;
+namespace OneMightyRoar\PredisToolkit;
 
 use \DomainException;
 
@@ -17,7 +17,7 @@ use \DomainException;
  *
  * A singleton which abstracts the user from the Predis client object.
  *
- * @package OneMightyRoar\PHP_Redis_Transaction_Queue
+ * @package OneMightyRoar\PredisToolkit
  */
 class Redis extends Singleton
 {
@@ -25,7 +25,7 @@ class Redis extends Singleton
     /**
      * Client wrapper for Redis APIs
      *
-     * @var \OneMightyRoar\PHP_Redis_Transaction_Queue\Client
+     * @var \OneMightyRoar\PredisToolkit\Client
      * @access private
      */
     private $client;
@@ -54,7 +54,7 @@ class Redis extends Singleton
      * Getter for the client object
      *
      * @access public
-     * @return \OneMightyRoar\PHP_Redis_Transaction_Queue\Client
+     * @return \OneMightyRoar\PredisToolkit\Client
      */
     public function getClient()
     {

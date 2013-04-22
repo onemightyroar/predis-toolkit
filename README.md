@@ -1,6 +1,6 @@
-# PHP Redis Transaction Queue
+# Predis Toolkit
 
-Allows the easy use of queueing multiple Redis commands into a "transaction" to be executed at one time
+Additional classes and functionality to extend Predis
 
 ## Original Creators
 

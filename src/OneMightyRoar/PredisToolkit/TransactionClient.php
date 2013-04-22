@@ -1,21 +1,21 @@
 <?php
 /**
- * PHP-Redis-Transaction-Queue
+ * Predis-Toolkit
  *
- * Allows the easy use of queueing multiple Redis commands into a "transaction" to be executed at one time
+ * Additional classes and functionality to extend Predis
  *
  * @copyright	2013 One Mighty Roar
  * @link	 	http://onemightyroar.com
  */
 
-namespace OneMightyRoar\PHP_Redis_Transaction_Queue;
+namespace OneMightyRoar\PredisToolkit;
 
 /**
  * TransactionClient
  *
  * A class that automates the queueing up all redis commands for later execution, based on a key.
  *
- * @package OneMightyRoar\PHP_Redis_Transaction_Queue
+ * @package OneMightyRoar\PredisToolkit
  */
 class TransactionClient
 {
@@ -23,7 +23,7 @@ class TransactionClient
     /**
      * The Redis object
      *
-     * @var \OneMightyRoar\PHP_Redis_Transaction_Queue\Redis
+     * @var \OneMightyRoar\PredisToolkit\Redis
      * @access private
      */
     private $redis;
@@ -31,7 +31,7 @@ class TransactionClient
     /**
      * The Redis Client object
      *
-     * @var \OneMightyRoar\PHP_Redis_Transaction_Queue\Client
+     * @var \OneMightyRoar\PredisToolkit\Client
      * @access private
      */
     private $client;
