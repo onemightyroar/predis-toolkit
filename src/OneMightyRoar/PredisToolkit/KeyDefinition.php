@@ -32,6 +32,6 @@ abstract class KeyDefinition
      */
     public function __toString()
     {
-        $this->toString();
+        return $this->toString();
     }
 }
