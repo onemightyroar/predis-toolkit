@@ -17,6 +17,22 @@ namespace OneMightyRoar\PredisToolkit;
  */
 trait KeyBuilderTrait
 {
+
+    /**
+     * Easy static shortcut for getting a key as a string
+     * @return string
+     */
+    public static function get()
+    {
+        $reflection = new \ReflectionClass(__CLASS__);
+        $me = $reflection->newInstanceArgs(func_get_args());
+        $key = (string) $me;
+
+        // Clean up and return
+        unset($me, $reflection);
+        return $key;
+    }
+
     /**
      * Return an array containing all the key pieces to build the full key
      *
