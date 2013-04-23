@@ -11,14 +11,14 @@
 namespace OneMightyRoar\PredisToolkit;
 
 /**
- * Client
+ * AbstractKeyDefinition
  *
  * Extending class for Predis client to add extra functionality
  *
  * @package OneMightyRoar\PredisToolkit
  * @abstract
  */
-abstract class KeyDefinition
+abstract class AbstractKeyDefinition
 {
     /**
      * Return the string value of the key

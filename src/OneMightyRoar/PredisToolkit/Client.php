@@ -91,8 +91,8 @@ class Client extends \Predis\Client
      */
     public function __call($method, $arguments = array())
     {
-        // If the first argument is a KeyDefinition instead of a string, cast to a string
-        if (isset($arguments[0]) && $arguments[0] instanceof KeyDefinition) {
+        // If the first argument is a AbstractKeyDefinition instead of a string, cast to a string
+        if (isset($arguments[0]) && $arguments[0] instanceof AbstractKeyDefinition) {
             $arguments[0] = (string) $arguments[0];
         }
 
