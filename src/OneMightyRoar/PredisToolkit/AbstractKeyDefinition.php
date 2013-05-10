@@ -21,6 +21,12 @@ namespace OneMightyRoar\PredisToolkit;
 abstract class AbstractKeyDefinition
 {
     /**
+     * The type of storage in Redis. Acceptable values are string, set, zset, hash, list
+     * @var string
+     */
+    public $type = 'string';
+
+    /**
      * Return the string value of the key
      * @return string
      */

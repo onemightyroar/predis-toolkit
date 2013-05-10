@@ -26,6 +26,7 @@ trait KeyBuilderTrait
     {
         $reflection = new \ReflectionClass(__CLASS__);
         $me = $reflection->newInstanceArgs(func_get_args());
+
         $key = (string) $me;
 
         // Clean up and return

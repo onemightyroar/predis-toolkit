@@ -52,7 +52,6 @@ class Client extends \Predis\Client
      * @param string $key
      * @return bool
      */
-    /**
     public function executeQueue($key)
     {
         // Do we have commands queued?
