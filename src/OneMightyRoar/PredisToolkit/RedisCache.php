@@ -17,11 +17,21 @@ use OneMightyRoar\PredisToolkit\Exceptions\InvalidFormatException;
  */
 class RedisCache
 {
-    public static function get($key, $time, $callback = null)
+    /**
+     * Get an item from the cache. If the item doesn't exist, the callable is run. Data returned by the callable is
+     * cached for the specified amount of time.
+     *
+     * @param mixed $key
+     * @param int $time
+     * @param null $callback
+     * @return mixed The resulting cache data
+     * @access public
+     */
+    public static function get($key, $time = 0, $callback = null)
     {
         $redis = Redis::getInstance();
 
-        $type = ($key instanceof \OneMightyRoar\PredisToolkit\AbstractKeyDefinition)
+        $type = ($key instanceof AbstractKeyDefinition)
             ? $key->type
             : 'string';
 
@@ -34,7 +44,11 @@ class RedisCache
 
             if (null !== $data) {
                 self::$method($key, $data);
-                $redis->expire($key, $time);
+
+                // Set expiration if we're given a time. Otherwise, cache forever
+                if ($time) {
+                    $redis->expire($key, $time);
+                }
             }
 
             return $data;
@@ -43,10 +57,16 @@ class RedisCache
         return null;
     }
 
+    /**
+     * Invalidate a cache item by key
+     * @param $key
+     * @return bool
+     * @access public
+     */
     public static function invalidate($key)
     {
         $redis = Redis::getInstance();
-        return $redis->del($key);
+        return $redis->del((string)$key);
     }
 
     private static function getString($key)
