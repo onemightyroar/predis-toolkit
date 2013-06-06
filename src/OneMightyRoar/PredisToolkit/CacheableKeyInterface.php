@@ -11,7 +11,7 @@
 namespace OneMightyRoar\PredisToolkit;
 
 /**
- * Trait CacheableKeyInterface
+ * Interface CacheableKeyInterface
  *
  * @package OneMightyRoar\PredisToolkit
  */
