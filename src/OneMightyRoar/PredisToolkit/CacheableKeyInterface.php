@@ -18,6 +18,4 @@ namespace OneMightyRoar\PredisToolkit;
 interface CacheableKeyInterface
 {
     public static function getExpireTime();
-
 }
-
