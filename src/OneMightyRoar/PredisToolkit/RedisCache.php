@@ -39,7 +39,7 @@ class RedisCache
                     $cache_time = 0;
                 }
             } else {
-                throw new InvalidFormatException(
+                throw new Exception(
                     'Passing only two arguments requires a valid key type and callback function.'
                 );
             }
