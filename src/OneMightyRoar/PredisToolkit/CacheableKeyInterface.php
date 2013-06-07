@@ -11,11 +11,13 @@
 namespace OneMightyRoar\PredisToolkit;
 
 /**
- * Interface CacheableKeyInterface
+ * Trait CacheableKeyInterface
  *
  * @package OneMightyRoar\PredisToolkit
  */
 interface CacheableKeyInterface
 {
     public static function getExpireTime();
+
 }
+

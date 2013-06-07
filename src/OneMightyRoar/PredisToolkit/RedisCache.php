@@ -28,11 +28,21 @@ class RedisCache
      * @return mixed The resulting cache data
      * @access public
      */
-    public static function get($key, $cache_time = 0, $callback = null)
+    public static function get($key, $cache_time, $callback = null)
     {
-        if ($key instanceof CacheableKeyInterface && func_num_args() == 2) {
+        if (func_num_args() == 2) {
             $callback = func_get_arg(1);
-            $cache_time = $key->getExpireTime();
+            if (is_callable($callback) && $key instanceof AbstractKeyDefinition) {
+                if ($key instanceof CacheableKeyInterface) {
+                    $cache_time = $key->getExpireTime();
+                } else {
+                    $cache_time = 0;
+                }
+            } else {
+                throw new InvalidFormatException(
+                    'Passing only two arguments requires a valid key type and callback function.'
+                );
+            }
         }
 
         $redis = Redis::getInstance();
