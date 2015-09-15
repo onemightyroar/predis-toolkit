@@ -10,4 +10,3 @@
 
 // Load our autoloader, and add our Test class namespace
 $autoloader = require(__DIR__ . '/../vendor/autoload.php');
-$autoloader->add('OneMightyRoar\PredisToolki\Tests', __DIR__);
