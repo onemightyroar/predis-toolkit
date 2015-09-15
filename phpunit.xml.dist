@@ -12,15 +12,7 @@
          bootstrap="tests/bootstrap.php"
 >
     <testsuites>
-        <testsuite name="Client Unit Tests">
-            <directory>./tests/</directory>
-            <groups>
-                <exclude>
-                    <group>NetworkIntegration</group>
-                </exclude>
-            </groups>
-        </testsuite>
-        <testsuite name="Full Test Suite">
+        <testsuite name="Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
