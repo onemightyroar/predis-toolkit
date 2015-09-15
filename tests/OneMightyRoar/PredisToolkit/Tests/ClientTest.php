@@ -47,40 +47,33 @@ class ClientTest extends PHPUnit_Framework_TestCase
         return $mock_connection;
     }
 
-    public function testSupportedCommands()
+    public function testSupportedCommandsPassThroughMagicCallerCorrectly()
     {
         $profile = $this->client->getProfile();
 
         $commands = $profile->getSupportedCommands();
 
-        $key = 'COMMAND:ARG';
+        $key = 'KEY:NAME';
 
         foreach ($commands as $cmd => $cls) {
-            $command = null;
+            // quit command is different
+            if ('quit' === strtolower($cmd)) {
+                $this->client->getConnection()->expects($this->at(0))->method('disconnect')
+                    ->will($this->returnValue(null));
 
-            if ('info' === $cmd) {
+                $val = $this->client->$cmd($key);
+                $this->assertNull($val);
+            } else {
+                $command = null;
+
                 $this->client->getConnection()->expects($this->at(0))->method('executeCommand')
                     ->with($this->callback(function ($com) use (&$command) {
                         $command = $com;
                         return true;
                     }))
-                    ->will($this->returnValue('INFO'));
+                    ->will($this->returnValue('\n'));
 
-                $this->client->$cmd();
-                $this->assertInstanceOf($cls, $command);
-            } elseif ('quit' === $cmd) {
-                $this->client->getConnection()->expects($this->at(0))->method('disconnect')->will($this->returnValue(null));
-
-                $val = $this->client->$cmd($key);
-                $this->assertNull($val);
-            } else {
-                $this->client->getConnection()->expects($this->at(0))->method('executeCommand')
-                    ->with($this->callback(function ($com) use (&$command) {
-                        $command = $com;
-                        return true;
-                    }));
-
-                $this->client->$cmd($key, []);
+                $val = $this->client->$cmd($key, []);
                 $this->assertInstanceOf($cls, $command);
             }
         }
